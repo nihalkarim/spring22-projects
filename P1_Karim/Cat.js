@@ -8,6 +8,7 @@ class Cat {
 
 	constructor(color) {
 		this.size = random(25, 100);
+		//size = 100 below for testing purposes
 		//this.size = 100;
 		this.x = random(this.size * 1.1, width - this.size * 1.1); //random x loc
 		this.y = random(this.size * 1.1, height - this.size * 1.1); //random y loc

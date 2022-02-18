@@ -22,18 +22,19 @@ function setup() {
 	noStroke();
 
 	//fill creatures array with 7 random cats
-	for (let i = 0; i < 15; i++) {
+	for (let i = 0; i < 5; i++) {
 		creatures[i] = getNewCreature();
 	}
 	console.log(creatures); //use the console to print the cat info
 
 	//DOM element: selection menu
 	menu = createSelect();
+	menu.option(" --- :) --- ")
 	menu.option("Basic Click-Method");
 	menu.option("Turkish Cat Click-Method");
-	menu.option("Generate New Creature");
-	menu.option("Replace Creature");
-	menu.option("Delete Creature");
+	menu.option("Generate New");
+	menu.option("Replace");
+	menu.option("Delete");
 
 }
 
@@ -78,19 +79,25 @@ function getNewCreature() {
  * return : creature
  */
 function mouseClicked() {
-	for (let item of creatures) {
-		if (item.within(mouseX, mouseY) === true) {
-			//store index
+	let storedIndex;
+	for (let i = 0; i < creatures.length; i++) {
+		if (creatures[i].within(mouseX, mouseY) === true) {
+			//store creature's index
+			storedIndex = creatures.indexOf(creatures[i]);
+			console.log(storedIndex);
 		}
 	}
 
-	if (menu.value() === "Generate New Creature") {
+	//Generate new creature 
+	//  FINISH
+	if (menu.value() === "Generate New") {
 		///create new creature at mouse coordinates
 		creatures.push(getNewCreature());
 		creatures[creatures.length - 1].x = mouseX;
 		creatures[creatures.length - 1].y = mouseY;
 
 		// //if mouse is not within canvas, generate new creature in the middle of the canvas
+
 		// if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
 		// 	creatures[creatures.length - 1].x = mouseX;
 		// 	creatures[creatures.length - 1].x = mouseY;
@@ -101,14 +108,59 @@ function mouseClicked() {
 		console.log(creatures[creatures.length - 1]);
 		console.log(creatures);
 	}
+
+	//Bacic click triggered method 
+	// TO DO
+	if (menu.value() === "Basic Click-Method") {
+		console.log(creatures[storedIndex]);
+		creatures[storedIndex].onClick();
+		
+		// for (let item of creatures) {
+		// 	if(item != "Turkish") {
+		// 		item.onClick();
+		// 		console.log("working")
+		// 	}
+		// }
+		//implement the basic click-triggered method for the parent and derived classes (not Turkish)
+	}
+
+	//Special click triggered method 
+	// TO DO
+	if (menu.value() === "Turkish Cat Click-Method") {
+
+	}
+
+	//Replace creature
+	if (menu.value() === "Replace") {
+		//variables storing the x & y coordinates of the cat that was clicked on
+		let foundX = creatures[storedIndex].x; 
+		let foundY = creatures[storedIndex].y;
+
+		//remove the cat that was clicked on and replace with a new cat
+		creatures.splice(storedIndex, 1, getNewCreature());
+		
+		//place the new cat at the x,y coordinates of the cat it is replacing
+		creatures[storedIndex].x = foundX;
+		creatures[storedIndex].y = foundY;
+	}
+
+	//DELETE option
+	if (menu.value() === "Delete") {
+		//delete the creature that was clicked on
+		creatures.splice(storedIndex, 1);
+		console.log(creatures);
+
+	}
+	
+
+
+
 }
 
 
-/**
- * movement style: wrap 
- * >>> include speed
+/** 
+ * mouseClicked() function:
  * 
- * click triggered method: change night vs day on click
- * 
- * click-triggered method for ONE of the cats??
+ * a. constrained within canvas
+ * b. not working?
  */
