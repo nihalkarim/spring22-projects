@@ -1,0 +1,30 @@
+Nihal Karim
+IGME 102.01
+
+Assignment:
+Project 2 – April 18, 2022
+
+Description:
+This project uses CDC demographic and health data and visualizes it on the canvas.
+Users can visualize specific health + demographic data for different population sets.
+Users may also choose to see county names and scale the visualization.
+
+User responsibilities:
+The user needs to select different optionss through the DOM elements.
+They may choose from 4 different population sets:
+    - All localities
+    - Population <150k
+    - Population >150k
+    - >30% of population is NOT white
+The user may also choose from 4 different visualization mapping options
+    - Map depression, <7hrs of sleep, and median income
+    - Map no health insurance, whiteness, annual checkup, and diabetes
+    - Map current smoking and asthma
+    - Map obesity, high cholesterol, and heart disease
+
+Caveats/known issues:
+    - I made a different legend for each of the 4 mapping options. However, I'm having trouble loading any of the images, so there's no legend for now :(
+    - I didn't have time to do the scaling, so the control doesn't do anything at the moment
+
+Notes
+    - There are a couple requirements (legend + scaling) that are incomplete, but I'm going to try to get them done asap.
